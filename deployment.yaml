@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mananapp02
+spec:
+  selector:
+    matchLabels:
+      app: mananapp02-pod
+  template:
+    metadata:
+      labels:
+        app: mananapp02-pod
+    spec:
+      containers:
+      - name: mananapp02-container
+        image: barclaysacr02.azurecr.io/mananapp02:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
